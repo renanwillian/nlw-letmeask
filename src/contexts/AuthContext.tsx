@@ -36,7 +36,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
           avatar: photoURL
         });
       }
-    })
+    });
 
     return () => {
       unsubscribe();
@@ -71,5 +71,5 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     <AuthContext.Provider value={{ user, signInWithGoogle }}>
       {props.children}
     </AuthContext.Provider>
-  )
+  );
 }
