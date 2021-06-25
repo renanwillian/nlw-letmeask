@@ -24,17 +24,13 @@ export function Room() {
   const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
 
-  const { title, questions } = useRoom(roomId);
+  const { title, closedAt, questions } = useRoom(roomId);
 
   useEffect(() => {
-    const roomRef = database.ref(`rooms/${roomId}`);
-
-    roomRef.get().then(room => {
-      if (room.val().closedAt) {
-        history.push("/");
-      }
-    })
-  }, [roomId, history]);
+    if (closedAt) {
+      history.push("/");
+    }
+  }, [closedAt, history]);
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();

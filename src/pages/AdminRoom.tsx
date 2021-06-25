@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useHistory, useParams, Link } from 'react-router-dom';
 
 import logoImg from '../assets/images/logo.svg';
@@ -10,6 +11,7 @@ import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
 
 import { useRoom } from '../hooks/useRoom';
+import { useAuth } from '../hooks/useAuth';
 
 import '../styles/room.scss'
 import { database } from '../services/firebase';
@@ -19,19 +21,24 @@ type AdminRoomParams = {
 }
 
 export function AdminRoom() {
-  // const { user } = useAuth();
+  const { user } = useAuth();
   const history = useHistory();
   const params = useParams<AdminRoomParams>();
   const roomId = params.id;
 
-  const { title, questions } = useRoom(roomId);
+  const { title, authorId, closedAt, questions } = useRoom(roomId);
+
+  useEffect(() => {
+    if (authorId && authorId !== user?.id) {
+      history.push("/");
+    }
+  }, [user, authorId, history]);
 
   async function handleCloseRoom() {
     if (window.confirm("Tem certeza que você deseja encerrar esta sala?")) {
       await database.ref(`rooms/${roomId}`).update({
         closedAt: new Date(),
       });
-
       history.push('/');
     }
   }
@@ -63,7 +70,9 @@ export function AdminRoom() {
           </Link>
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined onClick={handleCloseRoom}>Encerrar Sala</Button>
+            <Button isOutlined onClick={handleCloseRoom} disabled={closedAt !== undefined}>
+              { closedAt !== undefined ? 'Sala Encerrada' : 'Encerrar Sala'} 
+            </Button>
           </div>
         </div>
       </header>
