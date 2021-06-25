@@ -1,15 +1,18 @@
-import { FormEvent, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { FormEvent, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-import illustrationImg from '../assets/images/illustration.svg'
-import logoImg from '../assets/images/logo.svg'
-import googleIconImg from '../assets/images/google-icon.svg'
+import illustrationImg from '../assets/images/illustration.svg';
+import logoImg from '../assets/images/logo.svg';
+import googleIconImg from '../assets/images/google-icon.svg';
 
-import { Button } from '../components/Button'
-import { useAuth } from '../hooks/useAuth'
+import { Button } from '../components/Button';
+import { useAuth } from '../hooks/useAuth';
 
-import '../styles/auth.scss'
-import { database } from '../services/firebase'
+import '../styles/auth.scss';
+import { database } from '../services/firebase';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function Home() {
   const history = useHistory();
@@ -33,12 +36,12 @@ export function Home() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
-      alert('Room does not exists.');
+      toast.error('Essa sala não existe.');
       return;
     }
 
     if (roomRef.val().closedAt) {
-      alert('Room already closed.');
+      toast.error('Essa sala já foi encerrada.');
       return;
     }
 
@@ -73,6 +76,7 @@ export function Home() {
           </form>
         </div>
       </main>
+      <ToastContainer hideProgressBar />
     </div>
   )
 }
