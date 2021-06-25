@@ -110,3 +110,45 @@
     }
   }
 }
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px 0;
+
+  border-radius: 8px;
+  background: #F8F8F8;
+
+  width: 600px;
+  height: 360px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  p {
+    color: #737380;
+  }
+
+  img {
+    width: 60px;
+    filter: invert(33%) sepia(96%) saturate(1088%) hue-rotate(319deg) brightness(91%) contrast(98%);
+  }
+
+  div {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+}

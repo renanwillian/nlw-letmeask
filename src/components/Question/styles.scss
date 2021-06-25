@@ -67,9 +67,8 @@
 
         &.liked {
           color: #835AFD;
-
-          svg path {
-            stroke: #835AFD;
+          img {
+            filter: brightness(0) saturate(100%) invert(32%) sepia(70%) saturate(2460%) hue-rotate(238deg) brightness(102%) contrast(98%);
           }
         }
       }

@@ -1,10 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory, useParams, Link } from 'react-router-dom';
+
+import Modal from 'react-modal';
 
 import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
+import closeImg from '../assets/images/close.svg';
+
+import { database } from '../services/firebase';
 
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
@@ -14,17 +19,20 @@ import { useRoom } from '../hooks/useRoom';
 import { useAuth } from '../hooks/useAuth';
 
 import '../styles/room.scss'
-import { database } from '../services/firebase';
 
 type AdminRoomParams = {
   id: string;
 }
+
+Modal.setAppElement('#root');
 
 export function AdminRoom() {
   const { user } = useAuth();
   const history = useHistory();
   const params = useParams<AdminRoomParams>();
   const roomId = params.id;
+  const [closeRoomModal, setCloseRoomModal] = useState(false);
+  const [deleteQuestionId, setDeleteQuestionId] = useState('');
 
   const { title, authorId, closedAt, questions } = useRoom(roomId);
 
@@ -35,12 +43,10 @@ export function AdminRoom() {
   }, [user, authorId, history]);
 
   async function handleCloseRoom() {
-    if (window.confirm("Tem certeza que você deseja encerrar esta sala?")) {
-      await database.ref(`rooms/${roomId}`).update({
-        closedAt: new Date(),
-      });
-      history.push('/');
-    }
+    await database.ref(`rooms/${roomId}`).update({
+      closedAt: new Date(),
+    });
+    history.push('/');
   }
 
   async function handleCheckQuestionAsAnswered(questionId: string, answered: boolean) {
@@ -55,10 +61,9 @@ export function AdminRoom() {
     });
   }
 
-  async function handleDeleteQuestion(questionId: string) {
-    if (window.confirm("Tem certeza que você deseja excluir esta pergunta?")) {
-      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
-    }
+  async function handleDeleteQuestion() {
+    await database.ref(`rooms/${roomId}/questions/${deleteQuestionId}`).remove();
+    setDeleteQuestionId('');
   }
 
   return (
@@ -70,7 +75,11 @@ export function AdminRoom() {
           </Link>
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined onClick={handleCloseRoom} disabled={closedAt !== undefined}>
+            <Button 
+              isOutlined
+              onClick={() => setCloseRoomModal(true)} 
+              disabled={closedAt !== undefined}
+            >
               { closedAt !== undefined ? 'Sala Encerrada' : 'Encerrar Sala'} 
             </Button>
           </div>
@@ -109,7 +118,7 @@ export function AdminRoom() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => handleDeleteQuestion(question.id)}
+                    onClick={() => setDeleteQuestionId(question.id)}
                   >
                     <img src={deleteImg} alt="Remover pergunta" />
                   </button>
@@ -118,6 +127,42 @@ export function AdminRoom() {
           })}
         </div>
       </main>
+      
+      <Modal 
+        isOpen={closeRoomModal} 
+        className="modal"
+        overlayClassName="overlay"
+      >
+        <img src={closeImg} alt="Encerrar sala" />
+        <h2>Encerrar sala</h2>
+        <p>Tem certeza que você deseja encerrar esta sala?</p>
+        <div>
+          <Button onClick={() => setCloseRoomModal(false)} isSecondary>
+            Cancelar
+          </Button>
+          <Button onClick={handleCloseRoom} isDanger>
+            Sim, encerrar
+          </Button>
+        </div>
+      </Modal>
+      
+      <Modal 
+        isOpen={deleteQuestionId !== ''} 
+        className="modal" 
+        overlayClassName="overlay"
+      >
+        <img src={deleteImg} alt="Excluir pergunta" />
+        <h2>Excluir pergunta</h2>
+        <p>Tem certeza que você deseja excluir esta pergunta?</p>
+        <div>
+          <Button onClick={() => setDeleteQuestionId('')} isSecondary>
+            Cancelar
+          </Button>
+          <Button onClick={() => handleDeleteQuestion()} isDanger>
+            Sim, excluir
+          </Button>
+        </div>
+      </Modal>
     </div>
   )
 }

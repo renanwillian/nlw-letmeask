@@ -23,7 +23,16 @@
     background: #FFF;
     border: 1px solid #835afd;
     color: #835afd;
+  }
 
+  &.secondary {
+    background: #DBDCDD;
+    color: #737380;
+  }
+
+  &.danger {
+    background: #EA4335;
+    color: #FFF;
   }
 
   &:not(:disabled):hover {
