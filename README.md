@@ -1,9 +1,13 @@
 <p align="center">
-  <img alt="Letmeask" src=".github/logo.svg" width="160px">
+  <a href="https://letmeask-6e711.web.app/" target="_blank">
+    <img alt="Letmeask" src=".github/logo.svg" width="160px">
+  </a>
 </p>
 
 <h1 align="center">
-  <img alt="Letmeask" src=".github/cover.png" />
+  <a href="https://letmeask-6e711.web.app/" target="_blank">
+    <img alt="Letmeask" src=".github/cover.png" />
+  </a>
 </h1>
 
 <br>
@@ -39,7 +43,7 @@ Lembrando que será necessário criar uma conta no [Firebase](https://firebase.g
 
 ## 💻 Projeto
 
-Letmeask é perfeito para criadores de conteúdos poderem criar salas de Q&A com o seu público, de uma forma muito organizada e democrática. 
+  <a href="https://letmeask-6e711.web.app/" target="_blank">Letmeask</a> é perfeito para criadores de conteúdos poderem criar salas de Q&A com o seu público, de uma forma muito organizada e democrática. 
 
 Este é um projeto desenvolvido durante a **[Next Level Week Together](https://nextlevelweek.com/)**, apresentada dos dias 20 a 27 de Junho de 2021.
 
