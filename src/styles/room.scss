@@ -1,3 +1,5 @@
+@import './variables';
+
 #page-room {
   header {
     padding: 24px;
@@ -35,17 +37,17 @@
       align-items: center;
 
       h1 {
-        font-family: 'Poppins', sans-serif;
+        font-family: $title-font;
         font-size: 24px;
         color: #29292e;
       }
 
       span {
         margin-left: 16px;
-        background: #e559f9;
+        background: $pink;
         border-radius: 9999px;
         padding: 8px 16px;
-        color: #FFF;
+        color: $white;
         font-weight: 500;  
         font-size: 14px;
       }
@@ -89,13 +91,13 @@
 
         > span {
           font-size: 14px;
-          color: #737380;
+          color: $grey-dark;
           font-weight: 500;
 
           button {
             background: transparent;
             border: 0;
-            color: #835AFD;
+            color: $primary;
             text-decoration: underline;
             font-size: 14px;
             font-weight: 500;
@@ -119,7 +121,7 @@
   padding: 70px 0;
 
   border-radius: 8px;
-  background: #F8F8F8;
+  background: $background;
 
   width: 600px;
   height: 360px;
@@ -130,7 +132,7 @@
   transform: translate(-50%, -50%);
 
   p {
-    color: #737380;
+    color: $grey-dark;
   }
 
   img {

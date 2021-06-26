@@ -1,9 +1,11 @@
+@import '../../styles/variables';
+
 .button {
   height: 50px;
   border-radius: 8px;
   font-weight: 500;
-  background: #835afd;
-  color: #FFF;
+  background: $primary;
+  color: $white;
   padding: 0 32px;
 
   display: flex;
@@ -20,19 +22,19 @@
   }
 
   &.outlined {
-    background: #FFF;
-    border: 1px solid #835afd;
-    color: #835afd;
+    background: $white;
+    border: 1px solid $primary;
+    color: $primary;
   }
 
   &.secondary {
-    background: #DBDCDD;
-    color: #737380;
+    background: $grey-light;
+    color: $grey-dark;
   }
 
   &.danger {
-    background: #EA4335;
-    color: #FFF;
+    background: $danger;
+    color: $white;
   }
 
   &:not(:disabled):hover {
