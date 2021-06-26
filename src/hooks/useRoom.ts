@@ -54,6 +54,12 @@ export function useRoom(roomId: string) {
         }
       });
 
+      parsedQuestions.sort((a, b) => {
+        return Number(a.isAnswered) - Number(b.isAnswered) 
+          || Number(b.isHighlighted) - Number(a.isHighlighted)
+          || b.likeCount - a.likeCount;
+      });
+
       setTitle(databaseRoom.title);
       setClosedAt(databaseRoom.closedAt);
       setAuthorId(databaseRoom.authorId);
