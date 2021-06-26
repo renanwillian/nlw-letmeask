@@ -3,7 +3,6 @@ import { useHistory, useParams, Link } from 'react-router-dom';
 
 import Modal from 'react-modal';
 
-import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
@@ -14,9 +13,12 @@ import { database } from '../services/firebase';
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
+import { ThemeToggler } from '../components/ThemeToggler';
+import { Logo } from '../components/Logo';
 
 import { useRoom } from '../hooks/useRoom';
 import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
 
 import '../styles/room.scss'
 
@@ -28,6 +30,7 @@ Modal.setAppElement('#root');
 
 export function AdminRoom() {
   const { user } = useAuth();
+  const { theme } = useTheme();
   const history = useHistory();
   const params = useParams<AdminRoomParams>();
   const roomId = params.id;
@@ -67,13 +70,14 @@ export function AdminRoom() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
           <Link to="/" className="logo">
-            <img src={logoImg} alt="Letmeask" />
+            <Logo />
           </Link>
           <div>
+            <ThemeToggler />
             <RoomCode code={roomId} />
             <Button 
               isOutlined
@@ -130,7 +134,7 @@ export function AdminRoom() {
       
       <Modal 
         isOpen={closeRoomModal} 
-        className="modal"
+        className={`modal ${theme}`} 
         overlayClassName="overlay"
       >
         <img src={closeImg} alt="Encerrar sala" />
@@ -148,7 +152,7 @@ export function AdminRoom() {
       
       <Modal 
         isOpen={deleteQuestionId !== ''} 
-        className="modal" 
+        className={`modal ${theme}`} 
         overlayClassName="overlay"
       >
         <img src={deleteImg} alt="Excluir pergunta" />

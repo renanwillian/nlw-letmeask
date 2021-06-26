@@ -1,6 +1,8 @@
 @import './variables';
 
 #page-room {
+  min-height: 100vh;
+
   header {
     padding: 24px;
     border-bottom: 1px solid #e2e2e2;
@@ -45,7 +47,7 @@
 
       span {
         margin-left: 16px;
-        background: $pink;
+        background: $secondary;
         border-radius: 9999px;
         padding: 8px 16px;
         color: $white;
@@ -112,6 +114,35 @@
       margin-top: 32px;
     }
   }
+
+  &.dark {
+    header {
+      border-bottom-color: rgb(56, 61, 63);
+    }
+
+    main {
+      .room-title {
+        h1 {
+          color: rgb(205, 200, 194);
+        }
+
+        span {
+          background: $secondary-dark;
+          color: rgb(232, 230, 227);
+        }
+      }
+
+      form {
+        .form-footer .user-info span {
+          color: rgb(205, 200, 194);
+        }
+
+        textarea {
+          background-color: rgb(25, 27, 28);
+        }
+      }
+    }
+  }
 }
 
 .modal {
@@ -144,6 +175,13 @@
   div {
     display: flex;
     gap: 16px;
+  }
+
+  &.dark {
+    color: rgb(205, 200, 194);
+    p {
+      color: rgb(155, 147, 134);
+    }
   }
 }
 

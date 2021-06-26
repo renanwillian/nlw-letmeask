@@ -45,4 +45,23 @@
     opacity: 0.6;
     cursor: not-allowed;
   }
+  
+  .dark & {
+    background: $primary-dark;
+    
+    &.outlined {
+      background: $background-dark;
+      border: 1px solid $primary-dark;
+    }
+    
+    &.secondary {
+      background: rgb(44, 47, 49);
+      color: rgb(155, 147, 134);
+    }
+
+    &.danger {
+      background: $danger-dark;
+      color: rgb(232, 230, 227);
+    }
+  }
 }

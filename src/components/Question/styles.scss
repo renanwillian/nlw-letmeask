@@ -80,4 +80,25 @@
       }
     }
   }
+
+  .dark & {
+    background: rgb(25, 27, 28);
+
+    p {
+      color: rgb(205, 200, 194);
+    }
+
+    &.highlighted {
+      background: #242240;
+      border-color: $primary-dark;
+    }
+    
+    &.answered {
+      background: rgb(44, 47, 49);
+    }
+
+    footer .user-info span {
+      color: rgb(155, 147, 134);
+    }
+  }
 }

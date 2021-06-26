@@ -24,3 +24,11 @@ body, input, button, textarea {
     font-size: 50%;
   }
 }
+
+.dark, .light {
+  transition: background 0.1s linear;
+}
+
+.dark {
+  background: $background-dark;
+}

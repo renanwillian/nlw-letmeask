@@ -1,18 +1,21 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useEffect } from 'react';
 import { useParams, Link, useHistory } from 'react-router-dom';
 
-import logoImg from '../assets/images/logo.svg';
 import likeImg from '../assets/images/like.svg';
 
+import { database } from '../services/firebase';
+
+import { Logo } from '../components/Logo';
 import { Button } from '../components/Button';
 import { RoomCode } from '../components/RoomCode';
 import { Question } from '../components/Question';
+import { ThemeToggler } from '../components/ThemeToggler';
+
 import { useAuth } from '../hooks/useAuth';
-import { database } from '../services/firebase';
+import { useRoom } from '../hooks/useRoom';
+import { useTheme } from '../hooks/useTheme';
 
 import '../styles/room.scss'
-import { useRoom } from '../hooks/useRoom';
-import { useEffect } from 'react';
 
 type RoomParams = {
   id: string;
@@ -20,6 +23,7 @@ type RoomParams = {
 
 export function Room() {
   const { user, signInWithGoogle } = useAuth();
+  const { theme } = useTheme();
   const history = useHistory();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
@@ -70,13 +74,16 @@ export function Room() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
           <Link to="/" className="logo">
-            <img src={logoImg} alt="Letmeask" />
+            <Logo />
           </Link>
-          <RoomCode code={roomId} />
+          <div>
+            <ThemeToggler />
+            <RoomCode code={roomId} />
+          </div>
         </div>
       </header>
 

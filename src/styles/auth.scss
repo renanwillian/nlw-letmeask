@@ -43,6 +43,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+
+    .themeToggler {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+    }
   }
 
   .main-content {
@@ -88,7 +95,7 @@
       margin-top: 16px;
 
       a {
-        color: $pink;
+        color: $secondary;
       }
     }
   }
@@ -115,6 +122,17 @@
       height: 1px;
       background: $grey-medium;
       margin-left: 16px;
+    }
+  }
+
+  &.dark {
+    h2 {
+      color: rgb(205, 200, 194);
+    }
+    
+    .main-content form input { 
+      background-color: rgb(24, 26, 27);
+      border-color: rgb(71, 77, 80);
     }
   }
 }

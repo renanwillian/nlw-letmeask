@@ -1,0 +1,52 @@
+.themeToggler {
+  width: 75px;
+  height: 40px;
+  padding: 8px 0 0 13px;
+
+  input {
+    opacity: 0;
+    position: absolute;
+  }
+
+  input:checked + label .ball {
+    transform: translateX(24px);
+  }
+
+  label {
+    background-color: #111;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: relative;
+    height: 26px;
+    width: 50px;
+    transform: scale(1.5);
+
+    img {
+      width: 18px;
+    }
+
+    .sun {
+      filter: invert(58%) sepia(96%) saturate(678%) hue-rotate(354deg) brightness(99%) contrast(93%);
+    }
+
+    .moon {
+      filter: invert(72%) sepia(99%) saturate(428%) hue-rotate(353deg) brightness(95%) contrast(98%);
+    }
+
+    .ball {
+      background-color: #FFF;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      height: 22px;
+      width: 22px;
+      transform: translateX(0px);
+      transition: transform 0.2s linear;
+    }
+  }
+}
