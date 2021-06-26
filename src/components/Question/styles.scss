@@ -46,11 +46,11 @@
       span {
         margin-left: 8px;
         color: $grey-dark;
-        font-size: 14px;
+        font-size: $font-size-main;
       }
     }
 
-    > div {
+    .buttons {
       display: flex;
       gap: 16px;
     }

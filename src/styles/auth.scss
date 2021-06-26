@@ -23,13 +23,13 @@
 
     strong {
       font: 700 36px $title-font;
-      line-height: 42px;
+      line-height: 4.2rem;
       margin-top: 16px;
     }
 
     p {
-      font-size: 24px;
-      line-height: 32px;
+      font-size: $font-size-title;
+      line-height: 3.2rem;
       margin-top: 16px;
       color: $background;
     }
@@ -59,8 +59,8 @@
     }
 
     h2 {
-      font-size: 24px;
-      margin-bottom: 24px;
+      font-size: $font-size-title;
+      margin-bottom: $font-size-title;
       font-family: $title-font;
     }
 
@@ -83,7 +83,7 @@
     }
 
     p {
-      font-size: 14px;
+      font-size: $font-size-main;
       color: $grey-dark;
       margin-top: 16px;
 
@@ -94,7 +94,7 @@
   }
 
   .separator {
-    font-size: 14px;
+    font-size: $font-size-main;
     color: $grey-medium;
     
     margin: 32px 0;
@@ -115,6 +115,29 @@
       height: 1px;
       background: $grey-medium;
       margin-left: 16px;
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  #page-auth aside img {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 620px) {
+  #page-auth {
+    flex-direction: column;
+    height: 200vh;
+
+    aside {
+      flex: 0 1 auto;
+      height: 100vh;
+    }
+
+    main {
+      flex: 0 1 auto;
+      height: 100vh;
     }
   }
 }

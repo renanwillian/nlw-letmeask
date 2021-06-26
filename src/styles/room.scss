@@ -30,6 +30,7 @@
   main {
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 10px;
 
     .room-title {
       margin: 32px 0 24px;
@@ -38,7 +39,7 @@
 
       h1 {
         font-family: $title-font;
-        font-size: 24px;
+        font-size: $font-size-title;
         color: #29292e;
       }
 
@@ -49,7 +50,7 @@
         padding: 8px 16px;
         color: $white;
         font-weight: 500;  
-        font-size: 14px;
+        font-size: $font-size-main;
       }
     }
 
@@ -85,12 +86,12 @@
             margin-left: 8px;
             color: #29292e;
             font-weight: 500;
-            font-size: 14px;
+            font-size: $font-size-main;
           }
         }
 
         > span {
-          font-size: 14px;
+          font-size: $font-size-main;
           color: $grey-dark;
           font-weight: 500;
 
@@ -99,7 +100,7 @@
             border: 0;
             color: $primary;
             text-decoration: underline;
-            font-size: 14px;
+            font-size: $font-size-main;
             font-weight: 500;
             cursor: pointer;
           }
@@ -153,4 +154,20 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 550px) {
+  header .content > div {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  header .content {
+    flex-direction: column;
+    
+    .logo {
+      margin-bottom: 10px;
+    }
+  }
 }

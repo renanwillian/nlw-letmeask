@@ -6,11 +6,21 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   background: #f8f8f8;
   color: #29292e;
 }
 
 body, input, button, textarea {
-  font: 400 16px $main-font;
+  font: 400 1.6rem $main-font;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
 }
