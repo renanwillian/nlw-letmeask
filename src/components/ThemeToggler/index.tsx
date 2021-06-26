@@ -1,7 +1,7 @@
 import moonImg from '../../assets/images/moon.svg';
 import sunImg from '../../assets/images/sun.svg';
 
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../../hooks';
 
 import './styles.scss';
 

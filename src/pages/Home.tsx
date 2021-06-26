@@ -6,14 +6,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import illustrationImg from '../assets/images/illustration.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 
-import { database } from '../services/firebase';
-
-import { Button } from '../components/Button';
-import { Logo } from '../components/Logo';
-import { ThemeToggler } from '../components/ThemeToggler';
-
-import { useAuth } from '../hooks/useAuth';
-import { useTheme } from '../hooks/useTheme';
+import { database } from '../services';
+import { Button, Logo, ThemeToggler } from '../components';
+import { useAuth, useTheme } from '../hooks';
 
 import '../styles/auth.scss';
 import 'react-toastify/dist/ReactToastify.css';

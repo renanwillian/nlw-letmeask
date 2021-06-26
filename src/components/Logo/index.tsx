@@ -1,7 +1,7 @@
 import logoImg from '../../assets/images/logo.svg';
 import logoDarkImg from '../../assets/images/logo-dark.svg';
 
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../../hooks';
 
 export function Logo() {
   const { theme } = useTheme();

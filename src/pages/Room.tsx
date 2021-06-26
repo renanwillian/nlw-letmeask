@@ -3,17 +3,9 @@ import { useParams, Link, useHistory } from 'react-router-dom';
 
 import likeImg from '../assets/images/like.svg';
 
-import { database } from '../services/firebase';
-
-import { Logo } from '../components/Logo';
-import { Button } from '../components/Button';
-import { RoomCode } from '../components/RoomCode';
-import { Question } from '../components/Question';
-import { ThemeToggler } from '../components/ThemeToggler';
-
-import { useAuth } from '../hooks/useAuth';
-import { useRoom } from '../hooks/useRoom';
-import { useTheme } from '../hooks/useTheme';
+import { database } from '../services';
+import { Button, Logo, Question, RoomCode, ThemeToggler } from '../components';
+import { useAuth, useRoom, useTheme } from '../hooks';
 
 import '../styles/room.scss'
 

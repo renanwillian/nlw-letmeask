@@ -8,17 +8,9 @@ import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
 import closeImg from '../assets/images/close.svg';
 
-import { database } from '../services/firebase';
-
-import { Button } from '../components/Button';
-import { RoomCode } from '../components/RoomCode';
-import { Question } from '../components/Question';
-import { ThemeToggler } from '../components/ThemeToggler';
-import { Logo } from '../components/Logo';
-
-import { useRoom } from '../hooks/useRoom';
-import { useAuth } from '../hooks/useAuth';
-import { useTheme } from '../hooks/useTheme';
+import { database } from '../services';
+import { Button, Logo, Question, RoomCode, ThemeToggler } from '../components';
+import { useAuth, useRoom, useTheme } from '../hooks';
 
 import '../styles/room.scss'
 
